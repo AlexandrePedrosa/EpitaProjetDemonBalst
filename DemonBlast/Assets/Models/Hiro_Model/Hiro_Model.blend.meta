@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4f9c52d3590e33d40a0f1ef60aa30210
+guid: c2b76ab84884b1643a8418446039b503
 timeCreated: 1519921059
 licenseType: Free
 ModelImporter:
@@ -58,6 +58,7 @@ ModelImporter:
     400048: body
     400050: Clothes
     2100000: unnamed
+    2100002: None__AO
     4300000: Plane
     4300002: Clothes
     4300004: body
@@ -76,7 +77,7 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
-    optimizeGameObjects: 0
+    optimizeGameObjects: 1
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 

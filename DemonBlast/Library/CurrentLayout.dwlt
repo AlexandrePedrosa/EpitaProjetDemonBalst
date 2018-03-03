@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 492}
   m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
-  controlID: 77
+  controlID: 60
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -213,7 +213,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 10
+  controlID: 108
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -495,7 +495,8 @@ MonoBehaviour:
     m_ScenePaths: []
     m_ShowAllHits: 0
     m_SearchArea: 0
-    m_Folders: []
+    m_Folders:
+    - Assets/Models/Hiro_Model
   m_ViewMode: 0
   m_StartGridSize: 64
   m_LastFolders: []
@@ -506,7 +507,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 4a300000
     m_LastClickedID: 12362
-    m_ExpandedIDs: 40270000
+    m_ExpandedIDs: 6e270000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -534,7 +535,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 40270000
+    m_ExpandedIDs: 6e27000098270000a4270000b4270000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -699,18 +700,18 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -1.2312768, y: 0.693403, z: -2.1632895}
+    m_Target: {x: 0.5044966, y: 0.37168118, z: -0.12781131}
     speed: 2
-    m_Value: {x: -1.2312768, y: 0.693403, z: -2.1632895}
+    m_Value: {x: 0.5044966, y: 0.37168118, z: -0.12781131}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
-    showFog: 1
-    showMaterialUpdate: 1
-    showSkybox: 1
-    showFlares: 1
-    showImageEffects: 1
-    showParticleSystems: 1
+    showFog: 0
+    showMaterialUpdate: 0
+    showSkybox: 0
+    showFlares: 0
+    showImageEffects: 0
+    showParticleSystems: 0
   grid:
     xGrid:
       m_Target: 0
@@ -725,13 +726,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.038492676, y: 0.89387447, z: -0.078242786, w: -0.4397556}
+    m_Target: {x: -0.0011290007, y: 0.998749, z: -0.042283338, w: -0.02667201}
     speed: 2
-    m_Value: {x: -0.038492672, y: 0.89387435, z: -0.078242786, w: -0.43975553}
+    m_Value: {x: -0.0011290007, y: 0.998749, z: -0.042283338, w: -0.02667201}
   m_Size:
-    m_Target: 8.418568
+    m_Target: 3.3003986
     speed: 2
-    m_Value: 8.418568
+    m_Value: 3.3003986
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -772,9 +773,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 6a010000
-    m_LastClickedID: 0
-    m_ExpandedIDs: 86fbffff00000000
+    m_SelectedIDs: a0e1ffff
+    m_LastClickedID: -7776
+    m_ExpandedIDs: 44e1ffff48e1ffff4ce1ffff54e1ffff58e1ffff5ce1ffff64e1ffff68e1ffff6ce1ffff74e1ffff78e1ffff7ce1ffff84e1ffff88e1ffff8ce1ffff90e1ffff94e1ffffa0e1fffff0e1ffff68f8ffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -793,7 +794,7 @@ MonoBehaviour:
       m_ClientGUIView: {fileID: 6}
     m_SearchString: 
   m_ExpandedScenes:
-  - TestScene
+  - Avatar Configuration
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
