@@ -60,6 +60,7 @@ ModelImporter:
     2100000: unnamed
     2100002: None__AO
     2100004: None__Hiro_Model_UVLayout_png
+    2100006: Material__Hiro_Texture_png
     4300000: Plane
     4300002: Clothes
     4300004: body
@@ -78,7 +79,7 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
-    optimizeGameObjects: 1
+    optimizeGameObjects: 0
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
