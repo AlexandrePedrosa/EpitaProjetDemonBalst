@@ -843,7 +843,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 303461494}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f444628ad2184624a8ea69939c1e36de, type: 3}
+  m_Script: {fileID: 11500000, guid: 543b38aaec5f8d34cb38cff8a7a74340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &328063882
@@ -1589,7 +1589,6 @@ GameObject:
   - component: {fileID: 1018276191}
   - component: {fileID: 1018276190}
   - component: {fileID: 1018276189}
-  - component: {fileID: 1018276188}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Untagged
@@ -1616,17 +1615,6 @@ RectTransform:
   m_AnchoredPosition: {x: 480, y: -482.31827}
   m_SizeDelta: {x: 780, y: 77.36348}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1018276188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1018276186}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59a6dca3d67755c4d844c38d4be38496, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1018276189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1854,7 +1842,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1160994658}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 533c98199c00c4045bac0fbb8ba8daf1, type: 3}
+  m_Script: {fileID: 11500000, guid: b0e08cc1c875e6b49893243ec392b051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1386586700
@@ -2438,7 +2426,6 @@ GameObject:
   - component: {fileID: 1838077723}
   - component: {fileID: 1838077722}
   - component: {fileID: 1838077721}
-  - component: {fileID: 1838077724}
   m_Layer: 5
   m_Name: MultiplayerButton
   m_TagString: Untagged
@@ -2561,17 +2548,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1838077719}
---- !u!114 &1838077724
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1838077719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 533c98199c00c4045bac0fbb8ba8daf1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1855376820
 GameObject:
   m_ObjectHideFlags: 0
@@ -2777,7 +2753,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1864107803}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 533c98199c00c4045bac0fbb8ba8daf1, type: 3}
+  m_Script: {fileID: 11500000, guid: b0e08cc1c875e6b49893243ec392b051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1888559548
