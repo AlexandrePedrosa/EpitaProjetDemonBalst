@@ -277,7 +277,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 226098147}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18aede6f8c22f9841b3e1d7e228548bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 50d40de1b75e05d4b9c0908ab45d7e9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &226098149
@@ -288,9 +288,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 226098147}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41e45cd3283ef9147adbd56ac703b117, type: 3}
+  m_Script: {fileID: 11500000, guid: f32b2cca43d879a4aa98c43ae4da5b9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_MovingTurnSpeed: 360
+  m_StationaryTurnSpeed: 180
+  m_JumpPower: 12
+  m_GravityMultiplier: 2
+  m_RunCycleLegOffset: 0.2
+  m_MoveSpeedMultiplier: 1
+  m_AnimSpeedMultiplier: 1
+  m_GroundCheckDistance: 0.3
 --- !u!1001 &1610043231
 Prefab:
   m_ObjectHideFlags: 0
@@ -333,6 +341,16 @@ Prefab:
     - target: {fileID: 114178931992758484, guid: 9755459ca235bdd4dbd68c8676353af1,
         type: 2}
       propertyPath: m_LocalPlayerAuthority
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 95064678311734550, guid: 9755459ca235bdd4dbd68c8676353af1,
+        type: 2}
+      propertyPath: m_UpdateMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 95064678311734550, guid: 9755459ca235bdd4dbd68c8676353af1,
+        type: 2}
+      propertyPath: m_CullingMode
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
