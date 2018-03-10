@@ -333,6 +333,15 @@ Prefab:
       propertyPath: rotationDamping
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 4820086016809272, guid: b00a0e086910d084ba046735f5ec050a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114494742017693822, guid: b00a0e086910d084ba046735f5ec050a,
+        type: 2}
+      propertyPath: heightDamping
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b00a0e086910d084ba046735f5ec050a, type: 2}
   m_IsPrefabParent: 0

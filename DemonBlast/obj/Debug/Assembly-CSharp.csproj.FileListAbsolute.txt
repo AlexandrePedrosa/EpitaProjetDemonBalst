@@ -17,7 +17,6 @@ C:\Users\Ajix\Documents\GitHub\EpitaProjetDemonBlast\DemonBlast\Temp\bin\Debug\U
 C:\Users\Ajix\Documents\GitHub\EpitaProjetDemonBlast\DemonBlast\Temp\bin\Debug\UnityEditor.UI.dll
 C:\Users\Ajix\Documents\GitHub\EpitaProjetDemonBlast\DemonBlast\Temp\bin\Debug\UnityEditor.UIAutomation.dll
 C:\Users\Ajix\Documents\GitHub\EpitaProjetDemonBlast\DemonBlast\Temp\bin\Debug\UnityEditor.VR.dll
-C:\Users\Ajix\Documents\GitHub\EpitaProjetDemonBlast\DemonBlast\Temp\bin\Debug\UnityEditor.WebGL.Extensions.dll
 C:\Users\Ajix\Documents\GitHub\EpitaProjetDemonBlast\DemonBlast\Temp\bin\Debug\UnityEditor.WindowsStandalone.Extensions.dll
 C:\Users\Ajix\Documents\GitHub\EpitaProjetDemonBlast\DemonBlast\Temp\bin\Debug\UnityEngine.Advertisements.dll
 C:\Users\Ajix\Documents\GitHub\EpitaProjetDemonBlast\DemonBlast\Temp\bin\Debug\UnityEngine.Analytics.dll
