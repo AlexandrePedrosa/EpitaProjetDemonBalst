@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   action: 6
-  target: {fileID: 0}
+  target: {fileID: 1792509213415956, guid: b00a0e086910d084ba046735f5ec050a, type: 2}
   source: {fileID: 0}
   triggerCount: -4
   repeatTrigger: 1
