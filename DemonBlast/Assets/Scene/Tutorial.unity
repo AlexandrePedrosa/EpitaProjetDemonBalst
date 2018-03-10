@@ -476,7 +476,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4520723019463500, guid: b00a0e086910d084ba046735f5ec050a, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4520723019463500, guid: b00a0e086910d084ba046735f5ec050a, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -510,6 +510,19 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b00a0e086910d084ba046735f5ec050a, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &599560151 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1267400809531732, guid: b00a0e086910d084ba046735f5ec050a,
+    type: 2}
+  m_PrefabInternal: {fileID: 599560150}
+--- !u!45 &599560152
+Skybox:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 599560151}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: f15c336556dd74f40aaca655f7767970, type: 2}
 --- !u!1 &848772851
 GameObject:
   m_ObjectHideFlags: 0
@@ -1184,53 +1197,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1456663321}
---- !u!1 &1552127752
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100026, guid: 5c0866c3f11656346b7fd034c3812da4, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1552127754}
-  - component: {fileID: 1552127753}
-  m_Layer: 0
-  m_Name: Hiro_Model
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!95 &1552127753
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 9500000, guid: 5c0866c3f11656346b7fd034c3812da4,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1552127752}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 5c0866c3f11656346b7fd034c3812da4, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!4 &1552127754
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400026, guid: 5c0866c3f11656346b7fd034c3812da4, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1552127752}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1576636161 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4207446107536606, guid: 13ecf005d1a2593439826a2c37958db3,
