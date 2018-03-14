@@ -535,7 +535,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1346917313460508}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15, y: 11, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4855185737152380}
@@ -1047,12 +1047,11 @@ MonoBehaviour:
   target: {fileID: 54598631659525680}
   lookat: {fileID: 4855185737152380}
   distance: 5
-  cameraSensiX: 360
-  cameraSensiY: 10
+  cameraSensi: 360
   maxHeight: 6
   minHeight: 0
   rotationDamping: 0.1
-  heightDamping: 4
+  heightDamping: 0.1
 --- !u!124 &124012832897471590
 Behaviour:
   m_ObjectHideFlags: 1
