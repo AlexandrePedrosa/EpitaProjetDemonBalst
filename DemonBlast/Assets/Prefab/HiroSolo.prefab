@@ -142,8 +142,8 @@ GameObject:
   - component: {fileID: 20669166714855800}
   - component: {fileID: 124012832897471590}
   - component: {fileID: 81186749864126034}
-  - component: {fileID: 114949891098579514}
   - component: {fileID: 45290601942706294}
+  - component: {fileID: 114577155525717440}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1033,7 +1033,7 @@ MonoBehaviour:
   m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
   m_GroundCheckDistance: 0.3
---- !u!114 &114949891098579514
+--- !u!114 &114577155525717440
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1044,14 +1044,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f76806479d916a64aa03f8e3eba7912f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 54598631659525680}
-  lookat: {fileID: 4855185737152380}
+  player: {fileID: 1346917313460508}
   distance: 5
+  height: 15
   cameraSensi: 360
-  maxHeight: 6
-  minHeight: 0
+  maxHeight: 85
+  minHeight: 285
   rotationDamping: 0.1
-  heightDamping: 0.1
+  heightDamping: 4
 --- !u!124 &124012832897471590
 Behaviour:
   m_ObjectHideFlags: 1

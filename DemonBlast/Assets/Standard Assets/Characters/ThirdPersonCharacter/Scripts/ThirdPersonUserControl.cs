@@ -6,9 +6,11 @@ using UnityEngine.Networking;
 namespace UnityStandardAssets.Characters.ThirdPerson
 {
     [RequireComponent(typeof (ThirdPersonCharacter))]
-    public class ThirdPersonUserControl : NetworkBehaviour
+	public class ThirdPersonUserControl : NetworkBehaviour
     {
         private ThirdPersonCharacter m_Character; // A reference to the ThirdPersonCharacter on the object
+		public Camera cam;
+		public Transform rightStick;
         private Transform m_Cam;                  // A reference to the main camera in the scenes transform
         private Vector3 m_CamForward;             // The current forward direction of the camera
         private Vector3 m_Move;
@@ -17,14 +19,17 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         
         private void Start()
         {
-			if (!isLocalPlayer)
-			{
+			
+			if (!isLocalPlayer) {
+				cam.enabled = false;
 				return;
+			} else {
+				cam.enabled = true;
 			}
             // get the transform of the main camera
-            if (Camera.main != null)
+            if (cam != null)
             {
-                m_Cam = Camera.main.transform;
+                m_Cam = cam.transform;
             }
             else
             {
@@ -45,10 +50,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				return;
 			}
 
-            if (!m_Jump)
-            {
-                m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
-            }
+			if (!m_Jump)
+			{
+				m_Jump = Input.GetButtonDown("Jump");
+			}
         }
 
 
@@ -61,9 +66,12 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			}
 
             // read inputs
-            float h = CrossPlatformInputManager.GetAxis("Horizontal");
-            float v = CrossPlatformInputManager.GetAxis("Vertical");
-            bool crouch = Input.GetKey(KeyCode.C);
+			float h =Input.GetAxis("Horizontal");
+			float v = Input.GetAxis("Vertical");
+			float x = Input.GetAxis("Look X");
+			float y = Input.GetAxis("Look Y");
+			bool crouch = Input.GetKey("crouch") || Input.GetAxis("crouch") > 0.5f;
+
 
             // calculate move direction to pass to character
             if (m_Cam != null)
@@ -84,6 +92,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
             // pass all parameters to the character control script
             m_Character.Move(m_Move, crouch, m_Jump);
+			rightStick.transform.position = new Vector3 (x,y,0);
             m_Jump = false;
         }
     }
