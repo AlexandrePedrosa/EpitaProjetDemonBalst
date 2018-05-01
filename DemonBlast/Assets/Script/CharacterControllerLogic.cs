@@ -8,7 +8,11 @@ public class CharacterControllerLogic : MonoBehaviour {
 	private float turnSpeed = 3.0f;
 	[SerializeField]
 	private Camera cam = null;
-
+	[SerializeField]
+	private float jumpForce = 3.0f;
+	[SerializeField]
+	private float jumpDist = 3.0f;
+	private CapsuleCollider capCollider;
 
 	private Animator animator;
 	private float speed = 0.0f;
@@ -18,11 +22,14 @@ public class CharacterControllerLogic : MonoBehaviour {
 	private float horizontal = 0.0f;
 	private float vertical = 0.0f;
 	private Vector3 moveDirection = new Vector3();
+	private float capHeight = 0.0f;
  
 	// Use this for initialization
 	void Start () 
 	{
 		animator = GetComponent<Animator> ();
+		capCollider = GetComponent<CapsuleCollider> ();
+		capHeight = capCollider.height;
 		if (animator.layerCount >= 2) 
 		{
 			animator.SetLayerWeight (1, 1);
@@ -32,6 +39,11 @@ public class CharacterControllerLogic : MonoBehaviour {
 	void FixedUpdate()
 	{
 		ApplyExtraRotation();
+		capCollider.height = capHeight;
+		if (IsInJump())
+		{
+			HandleJump ();
+		}
 	}
 
 	// Update is called once per frame
@@ -84,6 +96,13 @@ public class CharacterControllerLogic : MonoBehaviour {
 		return (Vector3.Angle(rootDirection, moveDirection) * (sign.y < 0 ? -1 : 1))/180;
 	}
 
+	public bool IsInJump()
+	{
+		return animator.GetCurrentAnimatorStateInfo (0).IsName ("Locomotion@Run_Jump")
+			|| animator.GetCurrentAnimatorStateInfo (0).IsName ("Locomotion@Idle_Jump")
+			|| animator.GetCurrentAnimatorStateInfo (0).IsName ("FallDown");
+	}
+
 	public bool IsInPivot()
 	{
 		return animator.GetCurrentAnimatorStateInfo (0).IsName ("LocomotionPivotL")
@@ -96,8 +115,7 @@ public class CharacterControllerLogic : MonoBehaviour {
 	{
 		return  animator.GetCurrentAnimatorStateInfo (0).IsName ("Locomotion") 
 			 || animator.GetCurrentAnimatorStateInfo (0).IsName ("IdlePivotR")
-			 || animator.GetCurrentAnimatorStateInfo (0).IsName ("IdlePivotL")
-			;
+			 || animator.GetCurrentAnimatorStateInfo (0).IsName ("IdlePivotL");
 	}
 
 	public void ApplyExtraRotation ()
@@ -106,6 +124,18 @@ public class CharacterControllerLogic : MonoBehaviour {
 		{
 			this.transform.Rotate (0, horizontal * turnSpeed * Time.deltaTime, 0);
 		}
+	}
+
+	public void HandleJump ()
+	{
+		float oldY = transform.position.y;
+		transform.Translate(Vector3.up * jumpForce * animator.GetFloat("JumpCurve") );
+		if (animator.GetCurrentAnimatorStateInfo (0).IsName ("Locomotion@Run_Jump") ) 
+		{
+			transform.Translate (Vector3.forward * jumpDist * Time.deltaTime);
+		}
+		cam.transform.Translate (Vector3.up * jumpForce * animator.GetFloat ("JumpCurve"));
+		capCollider.height = capHeight / 2;
 	}
 
 }

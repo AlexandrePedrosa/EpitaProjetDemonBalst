@@ -65,3 +65,4 @@ C:\Users\Ajix\Documents\GitHub\EpitaProjetDemonBlast\DemonBlast\Temp\bin\Debug\U
 C:\Users\Ajix\Documents\GitHub\EpitaProjetDemonBlast\DemonBlast\Temp\bin\Debug\UnityEditor.iOS.Extensions.Xcode.xml
 C:\Users\Ajix\Documents\GitHub\EpitaProjetDemonBlast\DemonBlast\obj\Debug\Assembly-CSharp.dll
 C:\Users\Ajix\Documents\GitHub\EpitaProjetDemonBlast\DemonBlast\obj\Debug\Assembly-CSharp.pdb
+C:\Users\Ajix\Documents\GitHub\EpitaProjetDemonBlast\DemonBlast\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb
