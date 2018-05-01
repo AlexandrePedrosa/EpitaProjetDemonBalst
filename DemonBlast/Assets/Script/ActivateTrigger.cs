@@ -16,7 +16,8 @@ namespace UnityStandardAssets.Utility
             Enable = 3,     // Enable a component
             Animate = 4,    // Start animation on target
             Deactivate = 5, // Decativate target GameObject
-            Move = 6
+            Move = 6,
+            Message = 7
         }
 
         public Mode action = Mode.Activate;         // The action to accomplish
@@ -27,6 +28,8 @@ namespace UnityStandardAssets.Utility
         public float x;
         public float y;
         public float z;
+        public string function;
+        private object value;
 
 
         private void DoActivateTrigger()
@@ -90,6 +93,12 @@ namespace UnityStandardAssets.Utility
                         if (targetGameObject != null)
                         {
                             targetGameObject.transform.position = new Vector3(x, y, z);
+                        }
+                        break;
+                    case Mode.Message:
+                        if (targetGameObject != null)
+                        {
+                            targetGameObject.SendMessage(function,value);
                         }
                         break;
                 }
