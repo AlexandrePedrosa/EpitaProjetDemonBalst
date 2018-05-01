@@ -12,8 +12,11 @@ public class CharacterControllerLogic : MonoBehaviour {
 	private float jumpForce = 3.0f;
 	[SerializeField]
 	private float jumpDist = 3.0f;
+	[SerializeField]
+	private float groundCheckDistance = 0.2f;
+		
 	private CapsuleCollider capCollider;
-
+	new private Rigidbody rigidbody;
 	private Animator animator;
 	private float speed = 0.0f;
 	private float sprintSpeed = 0.0f;
@@ -23,13 +26,17 @@ public class CharacterControllerLogic : MonoBehaviour {
 	private float vertical = 0.0f;
 	private Vector3 moveDirection = new Vector3();
 	private float capHeight = 0.0f;
+	private Vector3 capCenter = new Vector3();
+	private Vector3 groundNormal = Vector3.up;
  
 	// Use this for initialization
 	void Start () 
 	{
 		animator = GetComponent<Animator> ();
+		rigidbody = GetComponent<Rigidbody> ();
 		capCollider = GetComponent<CapsuleCollider> ();
 		capHeight = capCollider.height;
+		capCenter = capCollider.center;
 		if (animator.layerCount >= 2) 
 		{
 			animator.SetLayerWeight (1, 1);
@@ -40,10 +47,13 @@ public class CharacterControllerLogic : MonoBehaviour {
 	{
 		ApplyExtraRotation();
 		capCollider.height = capHeight;
+		capCollider.center = capCenter;
+		animator.SetBool ("OnGround", IsOnGround());
 		if (IsInJump())
 		{
 			HandleJump ();
 		}
+
 	}
 
 	// Update is called once per frame
@@ -51,7 +61,6 @@ public class CharacterControllerLogic : MonoBehaviour {
 	{
 		if (animator)
 		{
-			
 			horizontal = Input.GetAxis ("Horizontal");
 			vertical = Input.GetAxis ("Vertical");
 			moveDirection = StickToWorldSpace (this.transform, cam.transform);
@@ -65,11 +74,10 @@ public class CharacterControllerLogic : MonoBehaviour {
 			sprintSpeed = Mathf.Lerp (speed, 2.0f, Time.deltaTime);
 			speed = horizontal * horizontal + vertical * vertical;
 
-
 			if (Input.GetButton ("Sprint")) 
 			{
 				speed = sprintSpeed;
-				Debug.DrawRay (new Vector3 (this.transform.position.x, this.transform.position.y + 2f, this.transform.position.z), Vector3.up , Color.green);
+
 			}
 			if (!IsInPivot ())
 			{
@@ -99,8 +107,8 @@ public class CharacterControllerLogic : MonoBehaviour {
 	public bool IsInJump()
 	{
 		return animator.GetCurrentAnimatorStateInfo (0).IsName ("Locomotion@Run_Jump")
-			|| animator.GetCurrentAnimatorStateInfo (0).IsName ("Locomotion@Idle_Jump")
-			|| animator.GetCurrentAnimatorStateInfo (0).IsName ("FallDown");
+		|| animator.GetCurrentAnimatorStateInfo (0).IsName ("Locomotion@Idle_Jump")
+		|| animator.GetCurrentAnimatorStateInfo (0).IsName ("FallDown");
 	}
 
 	public bool IsInPivot()
@@ -109,6 +117,26 @@ public class CharacterControllerLogic : MonoBehaviour {
 			|| animator.GetCurrentAnimatorStateInfo (0).IsName ("LocomotionPivotR")
 		    || animator.GetAnimatorTransitionInfo (0).IsName ("Locomotion2pivotL")
 		    || animator.GetAnimatorTransitionInfo (0).IsName ("Locomotion2PivotR");
+	}
+
+	public bool IsOnGround()
+	{
+		Debug.DrawRay (capCenter, new Vector3(capCenter.x, capCenter.y -groundCheckDistance - capHeight, capCenter.z) , Color.green);
+		RaycastHit hitInfo;
+		int LayerMask = 1 << 8;
+		LayerMask = ~LayerMask;
+		if (Physics.Raycast(this.transform.position + capCenter, Vector3.down, out hitInfo, groundCheckDistance + capHeight, LayerMask))
+		{
+			animator.applyRootMotion = true;
+			groundNormal = hitInfo.normal;
+			return true;
+		}
+		else
+		{
+			animator.applyRootMotion = false;
+			groundNormal = Vector3.up;
+			return false;
+		}
 	}
 
 	public bool NeedsExtraTurn()
@@ -128,13 +156,20 @@ public class CharacterControllerLogic : MonoBehaviour {
 
 	public void HandleJump ()
 	{
-		float oldY = transform.position.y;
-		transform.Translate(Vector3.up * jumpForce * animator.GetFloat("JumpCurve") );
-		if (animator.GetCurrentAnimatorStateInfo (0).IsName ("Locomotion@Run_Jump") ) 
+		if (animator.GetBool ("OnGround"))
 		{
-			transform.Translate (Vector3.forward * jumpDist * Time.deltaTime);
+			if (animator.GetCurrentAnimatorStateInfo (0).IsName ("Locomotion@Idle_Jump")) 
+			{
+				rigidbody.velocity = new Vector3 (rigidbody.velocity.x ,jumpForce, rigidbody.velocity.z);
+			}
+
+			if (animator.GetCurrentAnimatorStateInfo (0).IsName ("Locomotion@Run_Jump")) 
+			{
+				rigidbody.velocity = new Vector3 (rigidbody.velocity.x ,jumpForce, rigidbody.velocity.z) + this.transform.forward * jumpDist;
+				Debug.DrawRay (new Vector3 (this.transform.position.x, this.transform.position.y + 2f, this.transform.position.z), Vector3.up , Color.green);
+			}
 		}
-		cam.transform.Translate (Vector3.up * jumpForce * animator.GetFloat ("JumpCurve"));
+		capCollider.center = capCenter * 2;
 		capCollider.height = capHeight / 2;
 	}
 

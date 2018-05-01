@@ -98,7 +98,9 @@ namespace UnityStandardAssets.Utility
 			Debug.DrawLine (lookat.position, transform.position, Color.cyan);
 
 			RaycastHit intersect = new RaycastHit();
-			if (Physics.Linecast (lookat.position, transform.position, out intersect)) 
+			int LayerMask = 1 << 8;
+			LayerMask = ~LayerMask;
+			if (Physics.Linecast (lookat.position, transform.position, out intersect,LayerMask)) 
 			{
 				transform.position += transform.rotation * Vector3.forward * (distance - intersect.distance);
 			}
