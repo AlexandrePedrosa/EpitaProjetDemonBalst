@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Characters.ThirdPerson;
 
-public class Bonus : MonoBehaviour
+/*public class Bonus : MonoBehaviour
 {
 
     public enum BonusType
@@ -53,4 +53,4 @@ public class Bonus : MonoBehaviour
         Destroy(gameObject);
 
     }
-}
+}*/
