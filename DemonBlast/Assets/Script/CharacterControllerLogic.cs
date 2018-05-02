@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterControllerLogic : MonoBehaviour {
+
+public class CharacterControllerLogic : MonoBehaviour 
+{
 
 	[SerializeField]
 	private float turnSpeed = 3.0f;
@@ -59,37 +61,43 @@ public class CharacterControllerLogic : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-		if (animator)
+		if (animator) 
 		{
 			horizontal = Input.GetAxis ("Horizontal");
 			vertical = Input.GetAxis ("Vertical");
+			animator.SetBool ("Jump", Input.GetButton ("Jump"));
+			sprintSpeed = Mathf.Lerp (speed, 2.0f, Time.deltaTime);
+			speed = horizontal * horizontal + vertical * vertical;
+			if (Input.GetButton ("Sprint"))
+			{
+				speed = sprintSpeed;
+			}
+		
+			
+		
 			moveDirection = StickToWorldSpace (this.transform, cam.transform);
 			Debug.DrawRay (new Vector3 (this.transform.position.x, this.transform.position.y + 2f, this.transform.position.z), moveDirection, Color.magenta);
-			moveDirection = transform.InverseTransformDirection(moveDirection);
+			moveDirection = transform.InverseTransformDirection (moveDirection);
 
 			turn = Mathf.Atan2 (moveDirection.x, moveDirection.z);
 
-			animator.SetBool ("Jump", Input.GetButton ("Jump"));
 
-			sprintSpeed = Mathf.Lerp (speed, 2.0f, Time.deltaTime);
-			speed = horizontal * horizontal + vertical * vertical;
 
-			if (Input.GetButton ("Sprint")) 
-			{
-				speed = sprintSpeed;
 
-			}
-			if (!IsInPivot ())
+
+
+			if (!IsInPivot ()) 
 			{
 				pivotAngle = turn * 180 / Mathf.PI;
 			}
 
-			Debug.DrawRay (new Vector3 (this.transform.position.x, this.transform.position.y + 2f, this.transform.position.z), this.transform.forward , Color.green);
+			Debug.DrawRay (new Vector3 (this.transform.position.x, this.transform.position.y + 2f, this.transform.position.z), this.transform.forward, Color.green);
 
 			animator.SetFloat ("Speed", speed, 0.4f, Time.deltaTime);
 			animator.SetFloat ("Turn", turn, 0.1f, Time.deltaTime);
 			animator.SetFloat ("PivotAngle", pivotAngle);
 		}
+
 	}
 
 	public Vector3 StickToWorldSpace(Transform root, Transform camera)

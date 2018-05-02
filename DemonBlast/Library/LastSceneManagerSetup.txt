@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scene/MapVersus.unity
+- path: Assets/Scene/MapCoop.unity
   isLoaded: 1
   isActive: 1
