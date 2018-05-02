@@ -1,56 +1,85 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityStandardAssets.Characters.ThirdPerson;
 
-/*public class Bonus : MonoBehaviour
+public class Bonus : MonoBehaviour
 {
 
     public enum BonusType
     {
-        SpeedUp = 0,    // Just broadcast the action on to the target
-        SpeedDown = 1,    // replace target with source
-        Invisibility = 2,   // Activate the target GameObject
-        JumpBoost = 3,     // Enable a component
-        Animate = 4,    // Start animation on target
-        Deactivate = 5, // Decativate target GameObject
-        Move = 6
+        SpeedUp = 0,
+        SpeedDown = 1,
+        Invisibility = 2,
+        JumpBoost = 3,
+        
     }
-
-    public BonusType type = BonusType.SpeedUp;         // The action to accomplish
-    public Object target;                       // The game object to affect. If none, the trigger work on this game object
-    public GameObject source;
-    public int triggerCount = 1;
-    public bool repeatTrigger = false;
-    public float x;
-    public float y;
-    public float z;
-
+    
+    public BonusType type = BonusType.SpeedUp;
+    private Collider player;
+    
     private void OnTriggerEnter(Collider other)
     {
         if (type == BonusType.SpeedUp)
         {
-            var a = other.gameObject.GetComponent<SoloThirdCharacter>();
-            a.m_MoveSpeedMultiplier += 0.2f;
+            var a = other.gameObject.GetComponent<CharacterControllerLogicMulti>();
+            //a.moveSpeedMultiplier += 0.2f;
+            Invoke("End",5);
 
         }
         if (type == BonusType.SpeedDown)
         {
-            var a = other.gameObject.GetComponent<SoloThirdCharacter>();
-            a.m_MoveSpeedMultiplier -= 0.2f;
+            var a = other.gameObject.GetComponent<CharacterControllerLogicMulti>();
+            //a.moveSpeedMultiplier -= 0.2f;
+            Invoke("End",5);
 
         }
         if (type == BonusType.Invisibility)
         {
             other.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+            Invoke("End",5);
 
         }
         if (type == BonusType.JumpBoost)
         {
-            var a = other.gameObject.GetComponent<SoloThirdCharacter>();
-            a.m_JumpPower += 2f;
+            var a = other.gameObject.GetComponent<CharacterControllerLogicMulti>();
+            a.jumpDist += 2f;
+            a.jumpForce += 2f;
+            Invoke("End",5);
         }
-        Destroy(gameObject);
+        player = other;
+        gameObject.GetComponent<BoxCollider>().enabled = false;
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        
 
     }
-}*/
+
+    private void End()
+    {
+        if (type == BonusType.SpeedUp)
+        {
+            var a = player.gameObject.GetComponent<CharacterControllerLogicMulti>();
+            //a.moveSpeedMultiplier -= 0.2f;
+
+        }
+        if (type == BonusType.SpeedDown)
+        {
+            var a = player.gameObject.GetComponent<CharacterControllerLogicMulti>();
+            //a.moveSpeedMultiplier += 0.2f;
+
+        }
+        if (type == BonusType.Invisibility)
+        {
+            player.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
+
+        }
+        if (type == BonusType.JumpBoost)
+        {
+            var a = player.gameObject.GetComponent<CharacterControllerLogicMulti>();
+            a.jumpDist -= 2f;
+            a.jumpForce -= 2f;
+        }
+        Destroy(gameObject);
+    }
+}

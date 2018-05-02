@@ -10,9 +10,9 @@ public class CharacterControllerLogicMulti : NetworkBehaviour {
 	[SerializeField]
 	private Camera cam = null;
 	[SerializeField]
-	private float jumpForce = 3.0f;
+	public float jumpForce = 3.0f;
 	[SerializeField]
-	private float jumpDist = 3.0f;
+	public float jumpDist = 3.0f;
 	[SerializeField]
 	private float groundCheckDistance = 0.2f;
 
