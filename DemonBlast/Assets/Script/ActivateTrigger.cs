@@ -30,13 +30,14 @@ namespace UnityStandardAssets.Utility
         public float z;
         public string function;
         private object value;
+        public bool destroy;
 
 
         private void DoActivateTrigger()
         {
             triggerCount--;
 
-            if (triggerCount == 0 || repeatTrigger)
+            if (triggerCount >= 0 || repeatTrigger)
             {
                 Object currentTarget = target ?? gameObject;
                 Behaviour targetBehaviour = currentTarget as Behaviour;
@@ -102,6 +103,8 @@ namespace UnityStandardAssets.Utility
                         }
                         break;
                 }
+                if (triggerCount == 0 && destroy)
+                    Destroy(gameObject);
             }
         }
 

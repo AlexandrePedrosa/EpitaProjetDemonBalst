@@ -11,7 +11,7 @@ public class Door : MonoBehaviour
 	void GetKey()
 	{
 		key += 1;
-		if (key <= value)
+		if (key >= value)
 			Destroy(gameObject);
 	}
 }
