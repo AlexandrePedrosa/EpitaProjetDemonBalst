@@ -12,11 +12,14 @@ EditorBuildSettings:
     path: Assets/Scene/Multiplayer.unity
     guid: 002514a1d59367042ae7d41d0288008d
   - enabled: 1
-    path: Assets/Scene/Solo.unity
-    guid: 87bcf77c702448a4bb671836d3f2ead9
-  - enabled: 1
     path: Assets/Scene/Tutorial.unity
     guid: 2695f538110e46d43a932f832bc23884
   - enabled: 1
-    path: Assets/Scene/Level 1.unity
-    guid: ed868f03e6f9f5445b6a604eefe0ebf7
+    path: Assets/Scene/MapCoop.unity
+    guid: 26b41415a771d7442ae79a05479bd634
+  - enabled: 1
+    path: Assets/Scene/MapVersus.unity
+    guid: 3c3fd29938497554884fdbf91b416a03
+  - enabled: 1
+    path: Assets/Scene/Sololvl1.unity
+    guid: 91cc8a1abcfd189418cdf350129d4ae0
