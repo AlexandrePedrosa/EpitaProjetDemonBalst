@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scene/Solo.unity
+- path: Assets/Scene/MapVersus.unity
   isLoaded: 1
   isActive: 1
