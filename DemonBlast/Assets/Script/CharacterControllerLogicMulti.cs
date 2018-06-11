@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class CharacterControllerLogicMulti : NetworkBehaviour {
+public class CharacterControllerLogicMulti : NetworkBehaviour, IAlive {
 
 	[SerializeField]
 	private float turnSpeed = 3.0f;
@@ -29,10 +29,17 @@ public class CharacterControllerLogicMulti : NetworkBehaviour {
 	private float capHeight = 0.0f;
 	private Vector3 capCenter = new Vector3();
 	private Vector3 groundNormal = Vector3.up;
+	private int health;
+
+	public int HP
+	{
+		get{return health;}
+	}
 
 	// Use this for initialization
 	void Start () 
 	{
+		health = 4;
 		animator = GetComponent<Animator> ();
 		rigidbody = GetComponent<Rigidbody> ();
 		capCollider = GetComponent<CapsuleCollider> ();
@@ -124,6 +131,11 @@ public class CharacterControllerLogicMulti : NetworkBehaviour {
 			|| animator.GetCurrentAnimatorStateInfo (0).IsName ("LocomotionPivotR")
 			|| animator.GetAnimatorTransitionInfo (0).IsName ("Locomotion2pivotL")
 			|| animator.GetAnimatorTransitionInfo (0).IsName ("Locomotion2PivotR");
+	}
+
+	public void TakeDamage(int amount)
+	{
+
 	}
 
 	public bool IsOnGround()

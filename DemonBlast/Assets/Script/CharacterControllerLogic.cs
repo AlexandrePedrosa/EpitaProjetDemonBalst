@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class CharacterControllerLogic : MonoBehaviour 
+public class CharacterControllerLogic : MonoBehaviour, IAlive
 {
 
 	[SerializeField]
@@ -30,10 +30,17 @@ public class CharacterControllerLogic : MonoBehaviour
 	private float capHeight = 0.0f;
 	private Vector3 capCenter = new Vector3();
 	private Vector3 groundNormal = Vector3.up;
+	private int health;
+
+	public int HP
+	{
+		get{return health;}
+	}
  
 	// Use this for initialization
 	void Start () 
 	{
+		health = 4;
 		animator = GetComponent<Animator> ();
 		rigidbody = GetComponent<Rigidbody> ();
 		capCollider = GetComponent<CapsuleCollider> ();
@@ -96,6 +103,14 @@ public class CharacterControllerLogic : MonoBehaviour
 			animator.SetFloat ("Speed", speed, 0.4f, Time.deltaTime);
 			animator.SetFloat ("Turn", turn, 0.1f, Time.deltaTime);
 			animator.SetFloat ("PivotAngle", pivotAngle);
+			if ( animator.GetCurrentAnimatorStateInfo (0).IsName ("Death"))
+			{
+				animator.SetBool ("Dead", false);
+			}
+			if (animator.GetCurrentAnimatorStateInfo (0).IsName ("TakeDamage"))
+			{
+				animator.SetBool ("TakeDamage", false);
+			}
 		}
 
 	}
@@ -127,13 +142,29 @@ public class CharacterControllerLogic : MonoBehaviour
 		    || animator.GetAnimatorTransitionInfo (0).IsName ("Locomotion2PivotR");
 	}
 
+	public void TakeDamage(int amount)
+	{
+		Debug.DrawRay(this.transform.position + Vector3.up , Vector3.forward, Color.red);
+		health -= amount;
+		if (health > 0) 
+		{
+			animator.SetBool ("TakeDamage", true);
+		} else 
+		{
+			animator.SetBool ("Dead", true);
+		}
+
+	}
+
 	public bool IsOnGround()
 	{
-		Debug.DrawRay (capCenter, new Vector3(capCenter.x, capCenter.y -groundCheckDistance - capHeight, capCenter.z) , Color.green);
+		
 		RaycastHit hitInfo;
 		int LayerMask = 1 << 8;
 		LayerMask = ~LayerMask;
-		if (Physics.Raycast(this.transform.position + capCenter, Vector3.down, out hitInfo, groundCheckDistance + capHeight, LayerMask))
+		Debug.DrawRay(this.transform.position + capCenter +new Vector3 (0,capHeight,0), (groundCheckDistance + 2 *  capHeight) * Vector3.down , Color.green);
+
+		if (Physics.Raycast(this.transform.position + capCenter +new Vector3 (0,capHeight,0), Vector3.down, out hitInfo, groundCheckDistance + 2* capHeight, LayerMask))
 		{
 			animator.applyRootMotion = true;
 			groundNormal = hitInfo.normal;
