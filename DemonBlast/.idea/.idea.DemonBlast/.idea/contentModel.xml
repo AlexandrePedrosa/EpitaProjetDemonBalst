@@ -34,7 +34,7 @@
           <e p="BackButtonScript.cs" t="Include" />
           <e p="BasicMob.cs" t="Include" />
           <e p="Bonus.cs" t="Include" />
-          <e p="Boss 1.cs" t="Include" />
+          <e p="Boss1.cs" t="Include" />
           <e p="Cameracontrol.cs" t="Include" />
           <e p="CameraControlMulti.cs" t="Include" />
           <e p="ChangeColor.cs" t="Include" />
