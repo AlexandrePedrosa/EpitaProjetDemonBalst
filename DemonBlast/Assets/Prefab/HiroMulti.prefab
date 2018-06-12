@@ -393,6 +393,7 @@ GameObject:
   - component: {fileID: 114391419591607320}
   - component: {fileID: 114207099827891486}
   - component: {fileID: 114240225861184322}
+  - component: {fileID: 81429987989471496}
   m_Layer: 8
   m_Name: HiroMulti
   m_TagString: Player
@@ -981,6 +982,13 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1471374047365694}
+  m_Enabled: 1
+--- !u!81 &81429987989471496
+AudioListener:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1791039911662784}
   m_Enabled: 1
 --- !u!92 &92886358001998332
 Behaviour:
