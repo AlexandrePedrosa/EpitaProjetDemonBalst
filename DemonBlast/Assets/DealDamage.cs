@@ -6,11 +6,11 @@ public class DealDamage : MonoBehaviour {
 
 	private Collider player;
 	[SerializeField]
-	private int amount;
+	public int damage;
 
 	private void OnTriggerEnter(Collider other)
 	{
 		var a = other.gameObject.GetComponent<IAlive>();
-		a.TakeDamage(amount);
+		a.TakeDamage(damage);
 	}
 }
