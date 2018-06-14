@@ -8,10 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/Menu.unity
     guid: 78a925e3e1d163b498b5532cea29748b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scene/Multiplayer.unity
     guid: 002514a1d59367042ae7d41d0288008d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scene/Tutorial.unity
     guid: 2695f538110e46d43a932f832bc23884
   - enabled: 1
@@ -23,3 +23,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/Sololvl1.unity
     guid: 91cc8a1abcfd189418cdf350129d4ae0
+  - enabled: 1
+    path: Assets/Scene/Sololvl2.unity
+    guid: 97fddd166e274b941bb5c98314988416
+  - enabled: 1
+    path: Assets/Scene/Bossmap.unity
+    guid: 8edf65c1acc943e45952b059aeabd270

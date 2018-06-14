@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BasicMob : MonoBehaviour {
-
+	
     public Object target;
     private GameObject targetGameObject;
     public Vector3 A;
@@ -31,7 +31,7 @@ public class BasicMob : MonoBehaviour {
         attack.GetComponent<MeshRenderer>().enabled = false;
         attack.AddComponent<DealDamage>();
         attack.GetComponent<DealDamage>().damage = damage;*/
-        dtime = AttackDelay;
+        dtime = 0;
 
     }
 

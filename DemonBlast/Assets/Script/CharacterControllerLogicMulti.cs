@@ -15,6 +15,8 @@ public class CharacterControllerLogicMulti : NetworkBehaviour, IAlive {
 	public float jumpDist = 3.0f;
 	[SerializeField]
 	private float groundCheckDistance = 0.2f;
+	[SerializeField]
+	private GameObject attackZone;
 
 	private CapsuleCollider capCollider;
 	new private Rigidbody rigidbody;
@@ -30,6 +32,7 @@ public class CharacterControllerLogicMulti : NetworkBehaviour, IAlive {
 	private Vector3 capCenter = new Vector3();
 	private Vector3 groundNormal = Vector3.up;
 	private int health;
+	private Collider attZone;
 
 	public int HP
 	{
@@ -39,10 +42,11 @@ public class CharacterControllerLogicMulti : NetworkBehaviour, IAlive {
 	// Use this for initialization
 	void Start () 
 	{
-		health = 4;
+		health = 10;
 		animator = GetComponent<Animator> ();
 		rigidbody = GetComponent<Rigidbody> ();
 		capCollider = GetComponent<CapsuleCollider> ();
+		attZone = attackZone.GetComponent<Collider> ();
 		capHeight = capCollider.height;
 		capCenter = capCollider.center;
 		if (animator.layerCount >= 2) 
@@ -76,6 +80,7 @@ public class CharacterControllerLogicMulti : NetworkBehaviour, IAlive {
 
 			horizontal = Input.GetAxis ("Horizontal");
 			vertical = Input.GetAxis ("Vertical");
+			animator.SetBool("Attack", Input.GetButton("Attack"));
 			animator.SetBool ("Jump", Input.GetButton ("Jump"));
 			sprintSpeed = Mathf.Lerp (speed, 2.0f, Time.deltaTime);
 			speed = horizontal * horizontal + vertical * vertical;
@@ -103,6 +108,26 @@ public class CharacterControllerLogicMulti : NetworkBehaviour, IAlive {
 			animator.SetFloat ("Speed", speed, 0.4f, Time.deltaTime);
 			animator.SetFloat ("Turn", turn, 0.1f, Time.deltaTime);
 			animator.SetFloat ("PivotAngle", pivotAngle);
+			if (animator.GetCurrentAnimatorStateInfo (0).IsName ("AttackCombo"))
+			{
+				Debug.DrawRay(this.transform.position + capCenter +new Vector3 (0,capHeight,0), (groundCheckDistance + 2 *  capHeight) * Vector3.down , Color.green);
+			}
+			if (!animator.GetCurrentAnimatorStateInfo(0).IsName ("AttackCombo") && (animator.GetCurrentAnimatorStateInfo (0).IsName ("Attack1") || animator.GetCurrentAnimatorStateInfo (0).IsName ("Attack2"))) 
+			{
+				attZone.enabled = true;
+			} else
+			{
+				attZone.enabled = false;
+			}
+
+			if ( animator.GetCurrentAnimatorStateInfo (0).IsName ("Death"))
+			{
+				animator.SetBool ("Dead", false);
+			}
+			if (animator.GetCurrentAnimatorStateInfo (0).IsName ("TakeDamage"))
+			{
+				animator.SetBool ("TakeDamage", false);
+			}
 		}
 	}
 
@@ -135,8 +160,18 @@ public class CharacterControllerLogicMulti : NetworkBehaviour, IAlive {
 
 	public void TakeDamage(int amount)
 	{
+		Debug.DrawRay(this.transform.position + Vector3.up , Vector3.forward, Color.red);
+		health -= amount;
+		if (health > 0) 
+		{
+			animator.SetBool ("TakeDamage", true);
+		} else 
+		{
+			animator.SetBool ("Dead", true);
+		}
 
 	}
+
 
 	public bool IsOnGround()
 	{
@@ -188,8 +223,8 @@ public class CharacterControllerLogicMulti : NetworkBehaviour, IAlive {
 				Debug.DrawRay (new Vector3 (this.transform.position.x, this.transform.position.y + 2f, this.transform.position.z), Vector3.up , Color.green);
 			}
 		}
-		capCollider.center = capCenter * 2;
-		capCollider.height = capHeight / 2;
+		capCollider.center = capCenter * 1.5f;
+		capCollider.height = capHeight / 1.5f;
 	}
 
 }

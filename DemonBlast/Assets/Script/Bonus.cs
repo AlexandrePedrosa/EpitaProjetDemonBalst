@@ -37,20 +37,30 @@ public class Bonus : MonoBehaviour
         }
         if (type == BonusType.Invisibility)
         {
-            other.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
-            Invoke("End",5);
+            var a = other.gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
+			if (a != null) 
+			{
+				a.enabled = false;
+				Invoke ("End", 5);
+				gameObject.GetComponent<BoxCollider> ().enabled = false;
+				gameObject.GetComponent<MeshRenderer> ().enabled = false;
+			}
 
         }
         if (type == BonusType.JumpBoost)
         {
             var a = other.gameObject.GetComponent<CharacterControllerLogicMulti>();
-            a.jumpDist += 2f;
-            a.jumpForce += 2f;
-            Invoke("End",5);
+			if (a != null)
+			{
+				a.jumpDist += 2f;
+				a.jumpForce += 2f;
+				Invoke ("End", 5);
+				gameObject.GetComponent<BoxCollider> ().enabled = false;
+				gameObject.GetComponent<MeshRenderer> ().enabled = false;
+			}
         }
         player = other;
-        gameObject.GetComponent<BoxCollider>().enabled = false;
-        gameObject.GetComponent<MeshRenderer>().enabled = false;
+
         
 
     }
@@ -71,8 +81,11 @@ public class Bonus : MonoBehaviour
         }
         if (type == BonusType.Invisibility)
         {
-            player.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
-
+			var a = player.gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
+			if (a != null) 
+			{
+				a.enabled = true;
+			}
         }
         if (type == BonusType.JumpBoost)
         {

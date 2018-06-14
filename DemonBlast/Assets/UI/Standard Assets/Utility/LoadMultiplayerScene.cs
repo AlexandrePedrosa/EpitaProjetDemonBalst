@@ -2,10 +2,11 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LoadMultiplayerScene : MonoBehaviour
-{
-	public void LoadByIndex (int sceneIndex)
-	{
-		SceneManager.LoadScene (sceneIndex);
-	}
-}
+//public class LoadMultiplayerScene : MonoBehaviour
+//{
+//	public void LoadByName (string sceneName, Canvas canvas)
+//	{
+//		canvas.enabled = true;
+//		SceneManager.LoadSceneAsync (sceneName);
+//	}
+//}
